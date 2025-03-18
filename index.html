@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="ViiNeuS : Volumetric Initialization for Implicit Neural Surface reconstruction of urban scenes
+with limited image overlap">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ViiNeuS: Volumetric Initialization for Implicit Neural Surface reconstruction of urban scenes
+with limited image overlap </title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+<!--  <link rel="icon" href="./static/images/favicon.svg">-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">ViiNeuS : Volumetric Initialization for Implicit Neural Surface reconstruction of urban scenes
+with limited image overlap</h1>
+          <h2 class="title is-3">CVPR 2025</h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=wt9rJ0IAAAAJ&hl=en">Hala Djeghim</a><sup>12</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=S3zYmOYAAAAJ">Nathan Piasco </a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=0jLPiLYAAAAJ">Moussab Bennehar</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=bRgp2lUAAAAJ">Luis Roldão</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=fjUPMcYAAAAJ">Dzmitry Tsishkou</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=RuWlFUsAAAAJ&hl=fr">Désiré Sidibé</a><sup>2</sup>,
+            </span>
+
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Noah's Ark, Huawei Paris Research Center, France ,</span>
+            <span class="author-block"><sup>2</sup>IBISC Laboratory, Univ. Evry, Paris-Saclay University, France.</span>
+          </div>
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2403.10344"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.10344"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/vineus.mp4"
+                type="video/mp4">
+      </video>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Neural implicit surface representation methods have recently shown impressive 3D reconstruction results.
+            However, existing solutions struggle to reconstruct driving scenes due to their large size, highly complex nature and their limited visual observation overlap.
+             Hence, to achieve accurate reconstructions, additional supervision data such as LiDAR, strong geometric priors, and long training times are required.
+
+
+           <p>
+
+            To tackle such limitations, we present <strong>ViiNeuS</strong>, a new hybrid implicit surface learning method that efficiently initializes the signed distance field to reconstruct large driving scenes from 2D street view images.
+          </p>
+          <p>
+            <strong>ViiNeuS</strong>'s hybrid architecture models two separate implicit fields: one representing the volumetric density of the scene, and another one representing the signed distance to the surface.
+            To accurately reconstruct urban outdoor driving scenarios, we introduce a novel volume-rendering strategy that relies on self-supervised probabilistic density estimation to sample points near the surface and transition progressively from volumetric to surface representation.
+            </p>
+           <p>
+            Our solution permits a proper and fast initialization of the signed distance field without relying on any geometric prior on the scene, compared to concurrent methods.
+            By conducting extensive experiments on four outdoor driving datasets, we show that <strong>ViiNeuS</strong> can learn an accurate and detailed 3D surface representation of various urban scene while being two times faster to train compared to previous state-of-the-art solutions.
+            </p>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h4 class="title is-3" style="text-align: center;"> StreetSurf</h4>
+
+          <img id="surf_img" controls playsinline height="100%"
+                 src="./static/images/surf.png">
+
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+          <h4 class="title is-3" style="text-align: center;"> ViiNeuS</h4>
+        <div class="columns is-centered">
+          <div class="column content">
+
+            <img id="vineusimg" controls playsinline height="100%"
+                 src="./static/images/viineus.png">
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{djeghim2025viineusvolumetricinitializationimplicit,
+  title={ViiNeuS: Volumetric Initialization for Implicit Neural Surface reconstruction of urban scenes with limited image overlap},
+  author={Hala Djeghim and Nathan Piasco and Moussab Bennehar and Luis Roldão and Dzmitry Tsishkou and Désiré Sidibé},
+  year={2025},
+  eprint={2403.10344},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2403.10344},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            We thank Nerfies for their template. You can find their source code <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">here</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
